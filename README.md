@@ -26,7 +26,7 @@
 
 ## Introduction
 
-This guide takes you step-by-step through setting up a cloud-based cybersecurity home lab using AWS. The lab incorporates a **Kali Linux** instance for penetration testing, a **Windows 10** workstation as a target system, and an **Ubuntu-based Security Tools Box** to run essential monitoring tools. This project demonstrates proficiency in cloud security, infrastructure-as-code (IaC), and security tool integration. It’s a valuable addition to your portfolio, showcasing hands-on expertise in deploying and securing cloud infrastructure.
+This project walks through creating a cloud-based cybersecurity home lab using AWS. The lab setup includes three key components: Kali Linux for penetration testing, Windows 10 as a target system, and an Ubuntu-based security tools box running Splunk and Tenable Nessus for monitoring and vulnerability assessments. The lab is designed with security best practices and principles in mind, leveraging Infrastructure as Code (IaC) via Terraform to automate and manage the environment.
 
 ---
 
@@ -164,7 +164,7 @@ Before starting this project, ensure you have:
 
 ## Conclusion
 
-This cloud-based cybersecurity home lab project provides a comprehensive, hands-on approach to cloud security, demonstrating skills in deploying and configuring security tools, setting up infrastructure, and following security best practices. It’s an ideal showcase for your cloud security capabilities, making it an excellent addition to your portfolio.
+This cloud-based cybersecurity home lab project provides a comprehensive setup for simulating a secure cloud infrastructure, designed to support various cybersecurity tools and methodologies. The architecture includes a VPC with public and private subnets, security groups, and instances for Kali Linux, Windows 10, and an Ubuntu-based security tools box. Key tools such as Splunk Enterprise for log aggregation and Tenable Nessus for vulnerability scanning are integrated into the environment, providing a practical framework for security monitoring and testing. The use of Terraform for infrastructure-as-code ensures that the environment is reproducible, scalable, and maintainable, following best practices for cloud security.
 
 ---
 
