@@ -1,4 +1,4 @@
-# Cloud-Based Cybersecurity Home Lab
+# AWS Cloud-Based Cybersecurity Home Lab
 
 ## Table of Contents
 
