@@ -170,7 +170,9 @@ This cloud-based cybersecurity home lab project provides a comprehensive setup f
 
 ## Resources
 
-- **AWS Documentation**: [AWS VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html), [AWS EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
-- **Terraform Documentation**: [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
-- **Splunk Setup Guide**: [Splunk Installation](https://www.splunk.com/en_us/download.html)
-- **Tenable Nessus Guide**: [Tenable Nessus Setup](https://www.tenable.com/products/nessus)
+- [AWS Documentation](https://aws.amazon.com/documentation/)
+- [Terraform Documentation](https://www.terraform.io/docs)
+- [Splunk Documentation](https://docs.splunk.com)
+- [Tenable Nessus Documentation](https://docs.tenable.com/nessus/)
+- [Kali Linux Official Site](https://www.kali.org/)
+- [Windows 10 Documentation](https://support.microsoft.com/en-us/windows)
