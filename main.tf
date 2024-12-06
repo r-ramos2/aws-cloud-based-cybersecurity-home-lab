@@ -5,7 +5,7 @@ provider "aws" {
 
 # VPC Creation
 resource "aws_vpc" "homelab_vpc" {
-  cidr_block           = "10.0.0.0/16"
+  cidr_block           = var.vpc_cidr_block
   enable_dns_support   = true
   enable_dns_hostnames = true
 
@@ -18,7 +18,7 @@ resource "aws_vpc" "homelab_vpc" {
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.homelab_vpc.id
   cidr_block              = var.public_subnet_cidr
-  availability_zone       = "us-east-2a"
+  availability_zone       = var.availability_zone
 
   map_public_ip_on_launch = true
 
@@ -64,21 +64,21 @@ resource "aws_security_group" "win_kali_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [var.allowed_cidr]
   }
 
   ingress {
     from_port   = 3389
     to_port     = 3389
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [var.allowed_cidr]
   }
 
   ingress {
     from_port   = -1  # ICMP
     to_port     = -1  # ICMP
     protocol    = "icmp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [var.allowed_cidr]
   }
 
   egress {
@@ -103,21 +103,21 @@ resource "aws_security_group" "security_tools_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [var.allowed_cidr]
   }
 
   ingress {
     from_port   = 9997
     to_port     = 9997
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [var.allowed_cidr]
   }
 
   ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [var.allowed_cidr]
   }
 
   egress {
@@ -135,14 +135,14 @@ resource "aws_security_group" "security_tools_sg" {
 # Windows Instance
 resource "aws_instance" "windows" {
   ami               = var.windows_ami
-  instance_type     = "t2.micro"
+  instance_type     = var.windows_instance_type
   subnet_id         = aws_subnet.public_subnet.id
   security_groups   = [aws_security_group.win_kali_sg.name]
   associate_public_ip_address = true
 
   key_name          = var.aws_key_name
   root_block_device {
-    volume_size = 30
+    volume_size = var.windows_volume_size
   }
 
   tags = {
@@ -153,14 +153,14 @@ resource "aws_instance" "windows" {
 # Kali Linux Instance
 resource "aws_instance" "kali" {
   ami               = var.kali_ami
-  instance_type     = "t2.micro"
+  instance_type     = var.kali_instance_type
   subnet_id         = aws_subnet.public_subnet.id
   security_groups   = [aws_security_group.win_kali_sg.name]
   associate_public_ip_address = true
 
   key_name          = var.aws_key_name
   root_block_device {
-    volume_size = 12
+    volume_size = var.kali_volume_size
   }
 
   tags = {
@@ -171,30 +171,17 @@ resource "aws_instance" "kali" {
 # Security Tools Box Instance
 resource "aws_instance" "security_tools" {
   ami               = var.security_tools_ami
-  instance_type     = "t3.large"
+  instance_type     = var.security_tools_instance_type
   subnet_id         = aws_subnet.public_subnet.id
   security_groups   = [aws_security_group.security_tools_sg.name]
   associate_public_ip_address = true
 
   key_name          = var.aws_key_name
   root_block_device {
-    volume_size = 30
+    volume_size = var.security_tools_volume_size
   }
 
   tags = {
     Name = "Cybersecurity Homelab [Security Tools]"
   }
-}
-
-# Outputs for Instance IPs
-output "windows_ip" {
-  value = aws_instance.windows.public_ip
-}
-
-output "kali_ip" {
-  value = aws_instance.kali.public_ip
-}
-
-output "security_tools_ip" {
-  value = aws_instance.security_tools.public_ip
 }
