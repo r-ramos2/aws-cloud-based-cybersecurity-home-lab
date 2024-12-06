@@ -20,7 +20,6 @@
 8. [Potential Enhancements and Next Steps](#potential-enhancements-and-next-steps)  
 9. [Conclusion](#conclusion)  
 10. [Resources](#resources)  
-11. [Terraform Code and Variables](#terraform-code-and-variables)  
 
 ---
 
