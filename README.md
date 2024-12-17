@@ -1,4 +1,4 @@
-# AWS Cloud-Based Cybersecurity Home Lab  
+# Scalable AWS Cybersecurity Lab for Real-Time Monitoring and Vulnerability Management
 
 ## Table of Contents  
 
