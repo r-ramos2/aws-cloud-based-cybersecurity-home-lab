@@ -41,6 +41,10 @@ This project demonstrates the creation of a cloud-based cybersecurity home lab o
 - **Subnets**: Public subnet for accessible systems and private subnet for internal services.  
 - **Security Groups**: Firewall rules control SSH, RDP, and HTTP/S traffic.  
 
+<img width="872" alt="architecture-2" src="https://github.com/user-attachments/assets/9bab234a-a197-4089-b8e5-62cdeb9e9ba1" />
+
+*Architecutre diagram*
+
 ---
 
 ## Prerequisites  
